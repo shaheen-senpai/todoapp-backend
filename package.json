@@ -2,10 +2,13 @@
   "name": "todoapp",
   "version": "1.0.0",
   "description": "[doc-site](https://fastn-community.github.io/doc-site/) will help you create\r a beautiful documentation site in no time.",
-  "main": "backend/app.js",
+  "main": "app.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node backend/app.js",
-    "build": "fastn serve"
+    "start": "node app.js",
+    "build": ""
   },
   "keywords": [],
   "author": "",
