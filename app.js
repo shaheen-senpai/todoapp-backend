@@ -40,10 +40,13 @@ const jwtCheck = jwt.expressjwt({
 // Create an Express application
 const app = express();
 const port = 3000;
-
+const corsOptions = {
+  origin: ['http://localhost:8000', 'https://trizwit.github.io/todoapp/'], // replace with your origins
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.use(json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -238,11 +241,11 @@ app.get('/fetchtodos/:username/:type', async (req, res) => {
 
 
   // Toggle the status of a todo between 'complete' and 'pending' by ID for a specific user
-  app.put('/todos/:userId/:id/toggle', jwtCheck, async (req, res) => {
-    const { userId, id } = req.params;
+  app.post('/todos/:username/:id/toggle', async (req, res) => {
+    const { username, id } = req.params;
 
     try {
-      const user = await User.findByPk(userId);
+      const user = await User.findOne({ where: { username: username } });
 
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
