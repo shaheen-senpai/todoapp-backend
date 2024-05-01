@@ -258,7 +258,7 @@ app.get('/fetchtodos/:username/:type', async (req, res) => {
       }
 
       // Toggle the status between 'complete' and 'pending'
-      todo.status = todo.status === 'complete' ? 'pending' : 'complete';
+      todo.status = todo.status === 'completed' ? 'pending' : 'completed';
       await todo.save();
 
       res.json({ message: 'Task status toggled successfully' });
