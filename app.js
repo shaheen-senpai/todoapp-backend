@@ -41,7 +41,7 @@ const jwtCheck = jwt.expressjwt({
 const app = express();
 const port = 3000;
 const corsOptions = {
-  origin: ['http://localhost:8000', 'https://trizwit.github.io/todoapp/'], // replace with your origins
+  origin: ['http://localhost:8000', 'https://trizwit.github.io', 'https://trizwit.github.io/todoapp/'], // replace with your origins
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
