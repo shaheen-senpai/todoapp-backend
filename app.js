@@ -126,7 +126,7 @@ app.get('/', jwtCheck, (req, res) => {
 
 
 // create a route adduser to add user to the database if not already present
-app.post('/adduser/:email', jwtCheck, async (req, res) => {
+app.post('/adduser/:email', async (req, res) => {
   const { email } = req.params;
 
   try {
@@ -147,7 +147,7 @@ app.post('/adduser/:email', jwtCheck, async (req, res) => {
 
 
 // Get all todos based on user email (stored in username column) and type (myday, important, flagged)
-app.get('/fetchtodos/:username/:type', jwtCheck, async (req, res) => {
+app.get('/fetchtodos/:username/:type', async (req, res) => {
   const { username, type } = req.params;
 
   try {
@@ -173,7 +173,7 @@ app.get('/fetchtodos/:username/:type', jwtCheck, async (req, res) => {
 
 
   // Add a new todo for a specific user
-  app.post('/addtodos/:username', jwtCheck, async (req, res) => {
+  app.post('/addtodos/:username', async (req, res) => {
     const { username } = req.params;
 
     try {
@@ -196,7 +196,7 @@ app.get('/fetchtodos/:username/:type', jwtCheck, async (req, res) => {
 
 
   // Delete a todo by ID for a specific user using a POST request
-  app.post('/deletetodos/:username/:id', jwtCheck, async (req, res) => {
+  app.post('/deletetodos/:username/:id', async (req, res) => {
     const { username, id } = req.params;
 
     try {
@@ -222,7 +222,7 @@ app.get('/fetchtodos/:username/:type', jwtCheck, async (req, res) => {
 
 
   // Toggle the status of a todo between 'complete' and 'pending' by ID for a specific user
-  app.post('/todos/:username/:id/toggle', jwtCheck, async (req, res) => {
+  app.post('/todos/:username/:id/toggle', async (req, res) => {
     const { username, id } = req.params;
 
     try {
